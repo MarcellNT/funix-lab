@@ -1,0 +1,24 @@
+{
+  "name": "lab01_05",
+  "version": "1.0.0",
+  "description": "This is the Git and Node basic learning project",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcellNT/funix-lab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcellNT/funix-lab/issues"
+  },
+  "homepage": "https://github.com/MarcellNT/funix-lab#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
