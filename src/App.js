@@ -3,6 +3,9 @@ import './App.css';
 // import component tu thu vien reactstrap
 import { Navbar, NavbarBrand } from 'reactstrap';
 // la mot trong nhung thu vien trong he sinh thai cua react
+import Menu from './components/MenuComponent';
+// import Menu component
+
 class App extends Component {
 // tao ra mot class component App tu Component cua react 
   render() {
@@ -15,6 +18,8 @@ class App extends Component {
               <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
           </div>
         </Navbar>
+        {/* su dung component de hien thi Menu */}
+        <Menu />
       </div>
     );
   }
