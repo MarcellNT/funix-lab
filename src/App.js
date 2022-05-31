@@ -13,7 +13,7 @@ class App extends Component {
     super(props);
     this.state = {
       // định nghĩa props dishes 
-      dishes: DISHES
+      dishes: DISHES,
     };
   }
   // Xác định state của class APP component
@@ -26,7 +26,7 @@ class App extends Component {
           <div className='container'>
               <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
           </div>
-        </Navbar>
+        </Navbar> 
         {/* su dung component de hien thi Menu */}
         <Menu dishes={this.state.dishes}/> 
         {/* Props dishes lấy dữ liệu từ file Json dishes.js  */}
