@@ -29,9 +29,8 @@ import {  Card, CardImg, CardImgOverlay, CardTitle } from "reactstrap";
                         onClick={props.onClick}
                     />
                 </div>
-
             )
-        })
+        });
         return(
             <div className="container">
                 <div className="row">
@@ -39,10 +38,6 @@ import {  Card, CardImg, CardImgOverlay, CardTitle } from "reactstrap";
                 </div>
             </div>
         )
-
     }  
         
-   
-
-
 export default Menu;
