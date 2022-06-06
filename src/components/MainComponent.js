@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import Home from "./HomeComponent";
 import Menu from "./MenuComponent";
 import DishDetail from "./DishDetailComponent ";
 import Header from "./HeaderComponent";
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Footer from "./FooterComponent";
 import { DISHES } from "../shared/dishes";
 
@@ -15,25 +17,21 @@ class Main extends Component {
         };
     }
 
-    onDishSelected(dishId) {
-        this.setState({ selectedDish: dishId })
-    }
 
     render() {
+        const HomePage = () => {
+            return (
+                <Home />
+            );
+        }
         return (
             <div>
                 <Header />
-                {/* Truyền props cho component Menu */}
-                {/* Khi click và dish thì sẽ hiển thị thông tin chi tiết của dish đó và dish được lấy theo giá trị dishId */}
-                <Menu
-                    dishes={this.state.dishes}
-                    onClick={(dishId) => this.onDishSelected(dishId)}
-                />
-                {/* Truyền props cho component DishDetail */}
-                {/* Chỉ hiển thị đúng món ăn có dishid tương ứng với state là selectedDish được chọn */}
-                <DishDetail
-                    dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]}
-                />
+                <Switch>
+                    <Route path='/home' component={HomePage} />
+                    <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
+                    <Redirect to="/home" />
+                </Switch>
                 <Footer />
             </div>
         )
