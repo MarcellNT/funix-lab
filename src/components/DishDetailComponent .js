@@ -13,13 +13,13 @@ import { Link } from "react-router-dom";
 //function component render ra thông tin chi tiết món ăn
 function RenderDish({ dish }) {
   return (
-      <Card>
-        <CardImg width="100%" src={dish.image} alt={dish.name} />
-        <CardBody>
-          <CardTitle>{dish.name}</CardTitle>
-          <CardText>{dish.description}</CardText>
-        </CardBody>
-      </Card>
+    <Card>
+      <CardImg width="100%" src={dish.image} alt={dish.name} />
+      <CardBody>
+        <CardTitle>{dish.name}</CardTitle>
+        <CardText>{dish.description}</CardText>
+      </CardBody>
+    </Card>
   );
 }
 
