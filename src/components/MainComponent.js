@@ -5,23 +5,18 @@ import Contact from './ContactComponent';
 import DishDetail from "./DishDetailComponent ";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
+import About from "./AboutComponent";
 import { DISHES } from "../shared/dishes";
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { Card, CardImg, CardText, CardBody,
-    CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
-
-
 
 // /Main component là container component nơi lưu trữ các state, sử dụng presentation component và truyền props cho presentaion Menu và DishDetail 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dishes: DISHES,
             dishes: DISHES,
             comments: COMMENTS,
             promotions: PROMOTIONS,
@@ -46,6 +41,11 @@ class Main extends Component {
                     comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))} />
             );
         };
+        const AboutUs = () => {
+            return(
+                <About leaders={this.state.leaders} />
+            )
+        }
         return (
             <div>
                 <Header />
@@ -54,6 +54,7 @@ class Main extends Component {
                     <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
                     <Route path='/menu/:dishId' component={DishWithId} />
                     <Route exact path='/contactus' component={Contact} />
+                    <Route exact path='/aboutus' component={AboutUs}/>
                     <Redirect to="/home" />
                 </Switch>
                 <Footer />
