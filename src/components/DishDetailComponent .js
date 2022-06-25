@@ -9,6 +9,7 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import CommentForm from "./CommentFormComponent";
 
 //function component render ra thông tin chi tiết món ăn
 function RenderDish({ dish }) {
@@ -74,6 +75,7 @@ const DishDetail = (props) => {
           </div>
           <div className="col-12 col-md-5 m-1">
             <RenderComments comments={props.comments} />
+            <CommentForm/>
           </div>
         </div>
       </div>
