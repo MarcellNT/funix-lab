@@ -54,10 +54,10 @@ class Main extends Component {
             );
         };
         const AboutUs = () => {
-            return (
-                <About leaders={this.state.leaders} />
+            return(
+                <About leaders={this.props.leaders}/>
             );
-        };
+        }
         return (
             <div>
                 <Header />
