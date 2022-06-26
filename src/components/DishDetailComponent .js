@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import {
   Card,
   CardImg,
@@ -17,6 +17,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Loading } from "./LoadingComponent";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -188,32 +189,51 @@ class CommentForm extends Component {
 }
 // container component truyền props cho function component là RenderDish và Rendercomment và nhận props từ component cha là Maincomponent
 const DishDetail = (props) => {
-  const dish = props.dish;
-
-  if (dish != null) {
+  if (props.isLoading) {
     return (
       <div className="container">
         <div className="row">
-          {/* Thêm breadcrumb */}
-          <Breadcrumb>
-            <BreadcrumbItem>
-              <Link to="/menu">Menu</Link>
-            </BreadcrumbItem>
-            <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
-          </Breadcrumb>
-          <div className="col-12">
-            <h3>{props.dish.name}</h3>
-            <hr />
-          </div>
-        </div>
-        <div className="row">
-          <RenderDish dish={props.dish} />
-          <RenderComments comments={props.comments} 
-              addComment={props.addComment}
-              dishId={props.dish.id}
-          />
+          <Loading />
         </div>
       </div>
+    );
+  } else if (props.errMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <h4>{props.errMess}</h4>
+        </div>
+      </div>
+    );
+  } else if (props.dish != null) {
+    return (
+      <React.Fragment>
+        <div className="container">
+          <div className="row">
+            <Breadcrumb>
+              <BreadcrumbItem>
+                <Link to="/menu">Menu</Link>
+              </BreadcrumbItem>
+              <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+            </Breadcrumb>
+            <div className="col-12">
+              <h3>{props.dish.name}</h3>
+              <hr />
+            </div>
+          </div>
+          <div className="row">
+            <RenderDish dish={props.dish} />
+            <div className="col-12 col-md-5 m-1">
+              <h4>Comments</h4>
+              <RenderComments
+                comments={props.comments}
+                addComment={props.addComment}
+                dishId={props.dish.id}
+              />
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
     );
   } else {
     return <div></div>;
